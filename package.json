@@ -1,0 +1,59 @@
+{
+  "name": "qc-log_api",
+  "version": "0.0.0",
+  "author": {
+    "name": "Danny Hurlburt",
+    "url": "https://github.com/dhurlburtusa"
+  },
+  "description": "API for Logging in JavaScript.",
+  "keywords": [
+    "api",
+    "javascript",
+    "log",
+    "logging",
+    "typescript"
+  ],
+  "homepage": "https://github.com/hypersoftllc/qc-log_api#readme",
+  "bugs": {
+    "url": "https://github.com/hypersoftllc/qc-log_api/issues"
+  },
+  "license": "ISC",
+  "files": [
+    "dist/",
+    "src/index.ts"
+  ],
+  "main": "dist/index.js",
+  "typings": "dist/index",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hypersoftllc/qc-log_api.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublish": "tsc",
+    "test": "jest --color --coverage",
+    "travisci": "npm test"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testPathIgnorePatterns": [
+      "<rootDir>/dist/",
+      "<rootDir>/node_modules/"
+    ],
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts",
+      "tsx"
+    ]
+  },
+  "devDependencies": {
+    "@types/jest": "^19.2.2",
+    "jest": "^19.0.2",
+    "ts-jest": "^19.0.14",
+    "typescript": "^2.3.2"
+  }
+}
