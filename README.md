@@ -1,6 +1,7 @@
 # qc-log_api
 
 [![Build Status][travis-svg]][travis-url]
+[![Coverage Status][coverage-image]][coverage-url]
 [![License][license-image]][license-url]
 [![Downloads][downloads-image]][downloads-url]
 
@@ -41,6 +42,8 @@ LOG.logAt(Log.Level.ERROR, '%s must have a length between %d and %d.', 'Password
 ```
 
 
+[coverage-image]: https://coveralls.io/repos/github/hypersoftllc/qc-log_api/badge.svg?branch=master
+[coverage-url]: https://coveralls.io/github/hypersoftllc/qc-log_api?branch=master
 [downloads-image]: http://img.shields.io/npm/dm/qc-log_api.svg
 [downloads-url]: http://npm-stat.com/charts.html?package=qc-log_api
 [license-image]: http://img.shields.io/npm/l/qc-log_api.svg
