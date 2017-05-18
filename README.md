@@ -1,6 +1,7 @@
 # qc-log_api
 
 [![Build Status][travis-svg]][travis-url]
+[![License][license-image]][license-url]
 
 This project defines an API for a logging system in JavaScript.  If you have ever used a logging system, then you are
 aware of its benefits over using something that simply prints to the console, standard out, or standard error.  A
@@ -37,6 +38,8 @@ LOG.logAt(Log.Level.ERROR, '%s must have a length between %d and %d.', 'Password
 ```
 
 
+[license-image]: http://img.shields.io/npm/l/qc-log_api.svg
+[license-url]: LICENSE
 [travis-svg]: https://travis-ci.org/hypersoftllc/qc-log_api.svg?branch=master
 [travis-url]: https://travis-ci.org/hypersoftllc/qc-log_api
 
