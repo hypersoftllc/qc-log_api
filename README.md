@@ -1,6 +1,11 @@
 # qc-log_api
 
-[![Build Status](https://travis-ci.org/hypersoftllc/qc-log_api.svg?branch=master)](https://travis-ci.org/hypersoftllc/qc-log_api)
+[![Build Status][travis-svg]][travis-url]
+[![Coverage Status][coverage-image]][coverage-url]
+[![License][license-image]][license-url]
+[![Downloads][downloads-image]][downloads-url]
+
+[![npm badge][npm-badge-png]][package-url]
 
 This project defines an API for a logging system in JavaScript.  If you have ever used a logging system, then you are
 aware of its benefits over using something that simply prints to the console, standard out, or standard error.  A
@@ -35,3 +40,16 @@ LOG.info('I am an %s level message', 'INFO');
 
 LOG.logAt(Log.Level.ERROR, '%s must have a length between %d and %d.', 'Password', 8, 20);
 ```
+
+
+[coverage-image]: https://coveralls.io/repos/github/hypersoftllc/qc-log_api/badge.svg?branch=master
+[coverage-url]: https://coveralls.io/github/hypersoftllc/qc-log_api?branch=master
+[downloads-image]: http://img.shields.io/npm/dm/qc-log_api.svg
+[downloads-url]: http://npm-stat.com/charts.html?package=qc-log_api
+[license-image]: http://img.shields.io/npm/l/qc-log_api.svg
+[license-url]: LICENSE
+[package-url]: https://npmjs.org/package/qc-log_api
+[npm-badge-png]: https://nodei.co/npm/qc-log_api.png?downloads=true&stars=true
+[travis-svg]: https://travis-ci.org/hypersoftllc/qc-log_api.svg?branch=master
+[travis-url]: https://travis-ci.org/hypersoftllc/qc-log_api
+

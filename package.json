@@ -30,6 +30,7 @@
   },
   "scripts": {
     "build": "tsc",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
     "prepublish": "tsc",
     "test": "jest --color --coverage",
     "travisci": "npm test"
@@ -52,6 +53,7 @@
   },
   "devDependencies": {
     "@types/jest": "^19.2.2",
+    "coveralls": "^2.13.1",
     "jest": "^19.0.2",
     "ts-jest": "^19.0.14",
     "typescript": "^2.3.2"

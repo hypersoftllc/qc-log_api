@@ -6,4 +6,5 @@
 /coverage
 /dist
 
+.coveralls.yml
 npm-debug.log
