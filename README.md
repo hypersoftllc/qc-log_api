@@ -7,18 +7,23 @@
 
 [![npm badge][npm-badge-png]][package-url]
 
-This project defines an API for a logging system in JavaScript.  If you have ever used a logging system, then you are
-aware of its benefits over using something that simply prints to the console, standard out, or standard error.  A
-logging system is configurable and allows one to determine which log messages are logged, where they are logged, and
-the format in which they are logged.
+This project defines an API for a logging system in JavaScript.  If you have
+ever used a logging system, then you are aware of its benefits over using
+something that simply prints to the console, standard out, or standard error.
+A logging system is configurable and allows one to determine which log
+messages are logged, where they are logged, and the format in which they are
+logged.
 
-There are several logging systems available for the JavaScript environment and at the start of a project you may not
-be ready to spend the time on testing and choosing a particular logging system.  This is where this logging API steps
-in.  It has the minimal API typically used by most logging systems.  By using this logging API now, it will be easier
-to upgrade to a full-blown logging system implementation that closely match this API.
+There are several logging systems available for the JavaScript environment and
+at the start of a project you may not be ready to spend the time on testing
+and choosing a particular logging system.  This is where this logging API
+steps in.  It has the minimal API typically used by most logging systems.  By
+using this logging API now, it will be easier to upgrade to a full-blown
+logging system implementation that closely match this API.
 
-Although this is designed to help enforce a particular logging API, it has a basic implementation which logs the
-messages to the `console` using the most appropriate method.  For example, a WARN level message is logged to
+Although this is designed to help enforce a particular logging API, it has a
+basic implementation which logs the messages to the `console` using the most
+appropriate method.  For example, a WARN level message is logged to
 `console.warn`.
 
 
