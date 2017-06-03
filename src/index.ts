@@ -18,6 +18,9 @@
  * log.info('template', ...);
  */
 
+export interface Formatter {
+  (...optionalParams: any[]): string;
+}
 
 export interface LogFactory {
   get(name: string): Log
@@ -80,24 +83,32 @@ export class Log {
     Object.freeze(this);
   }
 
-  debug(message?: string, ...optionalParams: any[]) {
-    console.log.apply(console, [message, ...optionalParams]);
+  debug(message?: string | Formatter, ...optionalParams: any[]) {
+    this.logAt(Log.Level.DEBUG, message, ...optionalParams);
   }
 
-  error(message?: string, ...optionalParams: any[]) {
-    console.error.apply(console, [message, ...optionalParams])
+  error(message?: string | Formatter, ...optionalParams: any[]) {
+    this.logAt(Log.Level.ERROR, message, ...optionalParams);
   }
 
-  fatal(message?: string, ...optionalParams: any[]) {
-    console.error.apply(console, [message, ...optionalParams])
+  fatal(message?: string | Formatter, ...optionalParams: any[]) {
+    this.logAt(Log.Level.FATAL, message, ...optionalParams);
   };
 
-  info(message?: string, ...optionalParams: any[]) {
-    console.info.apply(console, [message, ...optionalParams])
+  info(message?: string | Formatter, ...optionalParams: any[]) {
+    this.logAt(Log.Level.INFO, message, ...optionalParams);
   };
 
-  logAt(logLevel: number, message?: string, ...optionalParams: any[]) {
-    let args = [message, ...optionalParams];
+  logAt(logLevel: number, message?: string | Formatter, ...optionalParams: any[]) {
+    let args: any[];
+
+    if (typeof message == 'function') {
+      message = message.apply(null, [...optionalParams]);
+      args = [message];
+    }
+    else {
+      args = [message, ...optionalParams];
+    }
 
     if (logLevel < Log.Level.DEBUG) {
       console.trace.apply(console, args);
@@ -116,12 +127,12 @@ export class Log {
     }
   }
 
-  trace(message?: string, ...optionalParams: any[]) {
-    console.trace.apply(console, [message, ...optionalParams]);
+  trace(message?: string | Formatter, ...optionalParams: any[]) {
+    this.logAt(Log.Level.TRACE, message, ...optionalParams);
   }
 
-  warn(message?: string, ...optionalParams: any[]) {
-    console.warn.apply(console, [message, ...optionalParams])
+  warn(message?: string | Formatter, ...optionalParams: any[]) {
+    this.logAt(Log.Level.WARN, message, ...optionalParams);
   }
 
 }

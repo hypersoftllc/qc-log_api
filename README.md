@@ -37,13 +37,33 @@ npm install --save qc-log_api
 ## Usage
 
 ```js
+import * as printf from 'printf';
+
 import { Log } from 'qc-log_api';
 
 let LOG = Log.Factory.get('example');
 
+LOG.trace('I am a %s level message', 'TRACE');
+LOG.debug('I am a %s level message', 'DEBUG');
 LOG.info('I am an %s level message', 'INFO');
+LOG.warn('I am a %s level message', 'WARN');
+LOG.error('I am an %s level message', 'ERROR');
+LOG.fatal('I am a %s level message', 'FATAL');
 
+LOG.trace(printf, 'I am a %s level message', 'TRACE');
+
+let field_length_between = function (field_name, min_len, max_len) {
+    return printf('%s must have a length between %d and %d.', field_name, min_len, max_len);
+};
+LOG.warn(field_length_between, 'Username', 3, 50);
+LOG.warn(field_length_between, 'Password', 8, 20);
+
+LOG.logAt(Log.Level.TRACE, '%s must have a length between %d and %d.', 'Password', 8, 20);
+LOG.logAt(Log.Level.DEBUG, '%s must have a length between %d and %d.', 'Password', 8, 20);
+LOG.logAt(Log.Level.INFO, '%s must have a length between %d and %d.', 'Password', 8, 20);
+LOG.logAt(Log.Level.WARN, '%s must have a length between %d and %d.', 'Password', 8, 20);
 LOG.logAt(Log.Level.ERROR, '%s must have a length between %d and %d.', 'Password', 8, 20);
+LOG.logAt(Log.Level.FATAL, '%s must have a length between %d and %d.', 'Password', 8, 20);
 ```
 
 
