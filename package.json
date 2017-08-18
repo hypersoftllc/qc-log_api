@@ -1,6 +1,6 @@
 {
   "name": "qc-log_api",
-  "version": "0.0.0",
+  "version": "0.2.0",
   "author": {
     "name": "Danny Hurlburt",
     "url": "https://github.com/dhurlburtusa"
@@ -30,6 +30,7 @@
   },
   "scripts": {
     "build": "tsc",
+    "clean": "rimraf coverage dist",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "prepublish": "tsc",
     "test": "jest --color --coverage",
@@ -55,6 +56,8 @@
     "@types/jest": "^19.2.2",
     "coveralls": "^2.13.1",
     "jest": "^19.0.2",
+    "printf": "^0.2.5",
+    "rimraf": "^2.6.1",
     "ts-jest": "^19.0.14",
     "typescript": "^2.3.2"
   }
