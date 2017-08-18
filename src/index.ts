@@ -49,9 +49,11 @@ let Factory = {
   }
 };
 
+const VALID_LOG_NAME_REGEXP = /^[A-Za-z_$][\w$]*$/;
+
 export class Log {
 
-  static ROOT: Log = Factory.get('');
+  static ROOT: Log;
   static Factory: LogFactory = Factory;
   static Level = Object.freeze({
     TRACE: 0,
@@ -70,12 +72,12 @@ export class Log {
    */
   constructor(cfg: { name: string }) {
     if (typeof cfg.name != 'string') {
-      throw TypeError('`name` must be a dot separated string containing only alpha characters.');
+      throw TypeError('`name` must be a dot separated string containing only alphanumeric characters.');
     }
     if (cfg.name !== '') {
       cfg.name.split('.').forEach((item, idx, arr) => {
-        if (item.length === 0 || item.match('[^A-Za-z]')) {
-          throw TypeError('`name` must be a dot separated string containing only alpha characters.');
+        if (item.length === 0 || !item.match(VALID_LOG_NAME_REGEXP)) {
+          throw TypeError('`name` must be a dot separated string containing only alphanumeric characters.');
         }
       });
     }
@@ -136,3 +138,5 @@ export class Log {
   }
 
 }
+
+Log.ROOT = Factory.get('');

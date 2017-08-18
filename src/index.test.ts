@@ -35,6 +35,82 @@ describe('qc-log_api', () => {
           expect(log.name).toBe('');
         });
 
+        it('called with most legal JavaScript identifiers should return a Log instance', () => {
+          let log: Log;
+
+          log = Log.Factory.get('$');
+          expect(log).toBeInstanceOf(Log);
+          expect(log.name).toBe('$');
+
+          log = Log.Factory.get('$foo');
+          expect(log).toBeInstanceOf(Log);
+          expect(log.name).toBe('$foo');
+
+          log = Log.Factory.get('$foo$');
+          expect(log).toBeInstanceOf(Log);
+          expect(log.name).toBe('$foo$');
+
+          log = Log.Factory.get('i18n');
+          expect(log).toBeInstanceOf(Log);
+          expect(log.name).toBe('i18n');
+
+          log = Log.Factory.get('i$1');
+          expect(log).toBeInstanceOf(Log);
+          expect(log.name).toBe('i$1');
+
+          log = Log.Factory.get('$l10n');
+          expect(log).toBeInstanceOf(Log);
+          expect(log.name).toBe('$l10n');
+
+          log = Log.Factory.get('$.$');
+          expect(log).toBeInstanceOf(Log);
+          expect(log.name).toBe('$.$');
+
+          log = Log.Factory.get('$.$foo');
+          expect(log).toBeInstanceOf(Log);
+          expect(log.name).toBe('$.$foo');
+
+          log = Log.Factory.get('$.$foo$');
+          expect(log).toBeInstanceOf(Log);
+          expect(log.name).toBe('$.$foo$');
+
+          log = Log.Factory.get('$.i18n');
+          expect(log).toBeInstanceOf(Log);
+          expect(log.name).toBe('$.i18n');
+
+          log = Log.Factory.get('$.i$1');
+          expect(log).toBeInstanceOf(Log);
+          expect(log.name).toBe('$.i$1');
+
+          log = Log.Factory.get('$.$l10n');
+          expect(log).toBeInstanceOf(Log);
+          expect(log.name).toBe('$.$l10n');
+
+          log = Log.Factory.get('_.$');
+          expect(log).toBeInstanceOf(Log);
+          expect(log.name).toBe('_.$');
+
+          log = Log.Factory.get('_.$foo');
+          expect(log).toBeInstanceOf(Log);
+          expect(log.name).toBe('_.$foo');
+
+          log = Log.Factory.get('_.$foo$');
+          expect(log).toBeInstanceOf(Log);
+          expect(log.name).toBe('_.$foo$');
+
+          log = Log.Factory.get('_.i18n');
+          expect(log).toBeInstanceOf(Log);
+          expect(log.name).toBe('_.i18n');
+
+          log = Log.Factory.get('_.i$1');
+          expect(log).toBeInstanceOf(Log);
+          expect(log.name).toBe('_.i$1');
+
+          log = Log.Factory.get('_.$l10n');
+          expect(log).toBeInstanceOf(Log);
+          expect(log.name).toBe('_.$l10n');
+        });
+
         it('called with non-string should throw a `TypeError`', () => {
           expect(() => {
             Log.Factory.get(null);
@@ -56,6 +132,36 @@ describe('qc-log_api', () => {
         it('called with `"foo."` should throw a `TypeError`', () => {
           expect(() => {
             Log.Factory.get("foo.");
+          }).toThrow(TypeError);
+        });
+
+        it('called with log name beginning with a number should throw a `TypeError`', () => {
+          expect(() => {
+            Log.Factory.get("0");
+          }).toThrow(TypeError);
+          expect(() => {
+            Log.Factory.get("1");
+          }).toThrow(TypeError);
+          expect(() => {
+            Log.Factory.get("9");
+          }).toThrow(TypeError);
+          expect(() => {
+            Log.Factory.get("42");
+          }).toThrow(TypeError);
+          expect(() => {
+            Log.Factory.get("4alpha");
+          }).toThrow(TypeError);
+          expect(() => {
+            Log.Factory.get("valid.0");
+          }).toThrow(TypeError);
+          expect(() => {
+            Log.Factory.get("valid.1");
+          }).toThrow(TypeError);
+          expect(() => {
+            Log.Factory.get("valid.9");
+          }).toThrow(TypeError);
+          expect(() => {
+            Log.Factory.get("valid.42");
           }).toThrow(TypeError);
         });
 
